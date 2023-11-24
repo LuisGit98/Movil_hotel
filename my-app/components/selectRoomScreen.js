@@ -88,7 +88,6 @@ export function SelectRoomScreen({ navigation }) {
     ];
 
     const handleSelectRoom = (selectedRoom) => {
-        // Desseleccionar habitación anterior si hay una seleccionada
         rooms.forEach((room) => {
             room.isSelected = false;
         });
@@ -98,12 +97,10 @@ export function SelectRoomScreen({ navigation }) {
     };
 
     const handleReserveRoom = () => {
-        // Realiza la lógica de reserva aquí, por ejemplo, navegar a una pantalla de confirmación.
         console.log('Habitación reservada:', selectedRoom);
     };
 
     const handleCancelReserve = () => {
-        // Cancelar la reserva, deseleccionando la habitación
         setSelectedRoom(null);
     };
 
