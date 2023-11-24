@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import { styles } from '../styles/styles'
 import { CardHotel } from './hotelCards'
-import { Button } from '@rneui/base';
+
 
 
 export function SelectHotelScreen({ navigation }) {
