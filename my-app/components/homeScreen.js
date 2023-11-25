@@ -1,24 +1,28 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Menu from './bottomMenu';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Modal from 'react-native-modal';
+import { Calendar } from 'react-native-calendars';
 
 export const HomeScreen = ({ navigation }) => {
+  const [isCalendarVisible, setCalendarVisible] = useState(false);
+  const [selectedDates, setSelectedDates] = useState({});
+
   const goToDestination = () => {
-    // Aquí deberías navegar a la pantalla de destino
-    // Puedes ajustar el nombre de la pantalla según tu configuración de navegación
     navigation.navigate('Search');
   };
 
-  const goToCalendar = () => {
-    // Aquí deberías navegar a la pantalla de calendario
-    // Puedes ajustar el nombre de la pantalla según tu configuración de navegación
-    navigation.navigate('CalendarScreen');
+  const toggleCalendar = () => {
+    setCalendarVisible(!isCalendarVisible);
+  };
+
+  const handleSelectDates = () => {
+    console.log('Fechas seleccionadas:', selectedDates);
+    toggleCalendar(); 
   };
 
   const search = () => {
-    // Agrega la lógica para la búsqueda aquí
-    // Por ahora, solo mostraremos un mensaje en la consola
     console.log('Realizando búsqueda...');
   };
 
@@ -31,7 +35,7 @@ export const HomeScreen = ({ navigation }) => {
         <Text style={styles.buttonText}>A donde vamos?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={goToCalendar}>
+      <TouchableOpacity style={styles.button} onPress={toggleCalendar}>
         <Icon name="calendar" size={20} color="#fff" />
         <Text style={styles.buttonText}>Calendario</Text>
       </TouchableOpacity>
@@ -42,6 +46,20 @@ export const HomeScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <Menu />
+
+      <Modal isVisible={isCalendarVisible} onBackdropPress={toggleCalendar}>
+        <View style={styles.modalContainer}>
+          <Calendar
+            onDayPress={(day) => {
+              const { dateString } = day;
+              setSelectedDates({ ...selectedDates, [dateString]: { selected: true } });
+            }}
+          />
+          <TouchableOpacity style={styles.selectDatesButton} onPress={handleSelectDates}>
+            <Text style={styles.selectDatesButtonText}>Seleccionar fechas</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -76,4 +94,22 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginLeft: 10,
   },
+  modalContainer: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
+  },
+  selectDatesButton: {
+    backgroundColor: '#3498db',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 15,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  selectDatesButtonText: {
+    color: '#fff',
+    fontSize: 18,
+  },
 });
+
