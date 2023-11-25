@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, Pressable, Tou } from "react-native";
+import { View, StyleSheet, Text, Pressable, } from "react-native";
 
 export function Room({ tipoHabitacion,navigation }) {
     return (
