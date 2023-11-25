@@ -1,23 +1,30 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 const Menu = () => {
+  const navigation = useNavigation();
+
+  const navigateToScreen = (screenName) => {
+    navigation.navigate(screenName);
+  };
+
   return (
     <View style={styles.menuContainer}>
-      <TouchableOpacity style={styles.menuButton}>
+      <TouchableOpacity style={styles.menuButton} onPress={() => navigateToScreen('Favorites')}>
         <Icon name="heart" size={20} color="#000" />
         <Text style={styles.menuText}>Favoritos</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.menuButton}>
+      <TouchableOpacity style={styles.menuButton} onPress={() => navigateToScreen('HomeScreen')}>
         <Icon name="calendar" size={20} color="#000" />
         <Text style={styles.menuText}>Reservar</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.menuButton}>
+      <TouchableOpacity style={styles.menuButton} onPress={() => navigateToScreen('HistoryScreen')}>
         <Icon name="history" size={20} color="#000" />
         <Text style={styles.menuText}>Historial</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.menuButton}>
+      <TouchableOpacity style={styles.menuButton} onPress={() => navigateToScreen('ProfileScreen')}>
         <Icon name="user" size={20} color="#000" />
         <Text style={styles.menuText}>Perfil</Text>
       </TouchableOpacity>
@@ -26,7 +33,7 @@ const Menu = () => {
 };
 
 const { width } = Dimensions.get('window');
-const buttonWidth = width * 0.2; // Ajusta el ancho de los botones según tus necesidades
+const buttonWidth = width * 0.2;
 
 const styles = StyleSheet.create({
   menuContainer: {
@@ -36,7 +43,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     height: '10%',
-    width: '111%',
+    width: '100%',
   },
   menuButton: {
     flex: 1,

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import Menu from './bottomMenu'; // Ajusta la ruta según la ubicación de tu archivo Menu.js
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const Favorites = () => {
   return (
@@ -14,7 +15,6 @@ export const Favorites = () => {
         Reserva un rincón especial para tus preferidos: guarda aquí todo lo que amas para disfrutarlo más tarde
       </Text>
       
-      {/* Menú de opciones */}
       <Menu />
     </View>
   );
