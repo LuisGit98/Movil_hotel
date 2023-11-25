@@ -16,17 +16,17 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Favorites'>
+      <Stack.Navigator initialRouteName='LoginScreen'>
           <Stack.Screen
-          name='Favorites'
-          component={Favorites}
+          name='LoginScreen'
+          component={LoginScreen}
           options={{
             headerShown: false
           }} />
 
         <Stack.Screen
-          name='LoginScreen'
-          component={LoginScreen}
+          name='HomeScreen'
+          component={HomeScreen}
           options={{
             headerShown: false
           }} />
@@ -50,8 +50,8 @@ export default function App() {
           component={Room} />
 
         <Stack.Screen
-          name='HomeScreen'
-          component={HomeScreen} 
+          name='Favorites'
+          component={Favorites} 
           options={{
             headerShown: false
           }} /> 
