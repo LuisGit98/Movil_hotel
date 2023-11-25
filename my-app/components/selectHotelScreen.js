@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Pressable } from 'react-native'
 import { styles } from '../styles/styles'
 import { Entypo } from '@expo/vector-icons';
 import { CardHotel } from './hotelCards'
+import { Menu } from './bottomMenu'
 
 export function SelectHotelScreen({ navigation }) {
     return (
@@ -10,7 +11,7 @@ export function SelectHotelScreen({ navigation }) {
             <Text style={styles_h.title}>Aloja Baja Store</Text>
             <View style={styles_h.barra}>
                 <Text style={styles_h.text_h}>
-                    Selecciona un hotel
+                    Ordenar
                 </Text>
                 <Entypo
                     style={styles.icon}
@@ -24,6 +25,7 @@ export function SelectHotelScreen({ navigation }) {
             <CardHotel></CardHotel>
             <CardHotel></CardHotel>
             <CardHotel></CardHotel>
+
 
         </View>);
 }
@@ -40,6 +42,7 @@ const styles_h = StyleSheet.create({
         width: '70%',
         marginLeft: '10%',
         backgroundColor: '#fff',
+        marginTop: '10%'
 
     },
     barra: {
@@ -54,8 +57,6 @@ const styles_h = StyleSheet.create({
         color: '#fff'
     },
     icon: {
-        marginBottom:10
-
+        top: 0
     }
-
 })

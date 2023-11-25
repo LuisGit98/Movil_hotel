@@ -5,7 +5,9 @@ export function CardHotel({ navigation }) {
     return (
         <View style={styles.card}>
 
-            <Pressable >
+            <Pressable onPress={() => {
+                navigation.navigate('SelectRoomScreen')
+            }}>
 
                 <View style={styles.imgTextContainer}>
                     <Text style={styles.hotelName}>
@@ -13,7 +15,7 @@ export function CardHotel({ navigation }) {
                     <View style={styles.rate}><Text style={styles.rateText}>8.3</Text></View>
                     <Image
                         style={{
-                            width: 170, height: 120,  borderRadius: 15,top:-21
+                            width: 170, height: 120, borderRadius: 15, top: -21
                         }}
                         source={{ uri: "https://images.trvl-media.com/hotels/8000000/8000000/7999600/7999554/7446fb39_w.jpg" }}
                     />
@@ -65,8 +67,8 @@ const styles = StyleSheet.create({
         marginLeft: '74%',
         width: '30%',
         color: 'green',
-    
-    
+
+
     },
     heartIcon: {
         end: 1,
@@ -93,7 +95,6 @@ const styles = StyleSheet.create({
     rateText: {
         color: '#fff',
         textAlign: 'center'
-
     }
 
 })
