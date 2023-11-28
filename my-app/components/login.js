@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, TextInput, Pressable, StyleSheet } from 'react-native';
 
+
 export function LoginScreen({ navigation }) {
     const handleLogin = () => {
       navigation.navigate('HomeScreen');
@@ -105,7 +106,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
-
 
 
 

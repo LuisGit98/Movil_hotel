@@ -1,100 +1,111 @@
-import { Pressable, StyleSheet, View, Image, Text } from 'react-native'
+import React from 'react';
+import { Pressable, StyleSheet, View, Image, Text, Dimensions } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-export function CardHotel({ navigation }) {
-    return (
-        <View style={styles.card}>
-
-            <Pressable onPress={() => {
-                navigation.navigate('SelectRoomScreen')
-            }}>
-
-                <View style={styles.imgTextContainer}>
-                    <Text style={styles.hotelName}>
-                        Hotel Juan                    </Text>
-                    <View style={styles.rate}><Text style={styles.rateText}>8.3</Text></View>
-                    <Image
-                        style={{
-                            width: 170, height: 120, borderRadius: 15, top: -21
-                        }}
-                        source={{ uri: "https://images.trvl-media.com/hotels/8000000/8000000/7999600/7999554/7446fb39_w.jpg" }}
-                    />
-
-                    <Text>
-                        Using Lorem ipsum to focus attention on graphic elements in a webpage design proposal · One of the earliest examples of the Lorem ipsum placeholder text on 1960s advertising · In publishing and graphic design, Lorem ipsum  is a place
-                    </Text>
-
-                </View>
-                <AntDesign
-                    style={styles.heartIcon}
-                    name="hearto"
-                    size={28}
-                    color="black" />
-
-                <View>
-
-
-                    <Text style={styles.pricesText}>MXN-1,200 - 6,400</Text>
-
-                </View>
-
-            </Pressable>
+export function HotelCards({ navigation }) {
+  return (
+    <View style={styles.card}>
+      <Pressable
+        onPress={() => {
+          navigation.navigate('SelectRoomScreen');
+        }}
+        style={styles.pressable}
+      >
+        <View style={styles.imgContainer}>
+          <Image
+            style={styles.image}
+            source={{
+              uri:
+                'https://images.trvl-media.com/hotels/8000000/8000000/7999600/7999554/7446fb39_w.jpg',
+            }}
+          />
         </View>
-    );
-
+        <View style={styles.contentContainer}>
+          <Text style={styles.hotelName}>Hotel Juan</Text>
+          <View style={styles.rate}>
+            <Text style={styles.rateText}>8.3</Text>
+          </View>
+          <Text style={styles.description}>
+            Using Lorem ipsum to focus attention on graphic elements in a webpage
+            design proposal·
+          </Text>
+        </View>
+        <AntDesign style={styles.heartIcon} name="hearto" size={28} color="black" />
+      </Pressable>
+      <View style={styles.pricesContainer}>
+        <Text style={styles.pricesText}>MXN 1,200 - 6,400</Text>
+      </View>
+    </View>
+  );
 }
+
+const { width } = Dimensions.get('window');
+const imgContainerWidth = width * 0.35;
+
 const styles = StyleSheet.create({
-    card: {
-        width: '90%',
-        height: '20%',
-        borderRadius: 30,
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-
-    },
-    img: {
-        width: '90%',
-        borderWidth: 2,
-        borderColor: 'red'
-    },
-    imgTextContainer: {
-        maxWidth: '70%',
-        height: '100%',
-        marginLeft: 10
-    },
-    pricesText: {
-        top: -38,
-        marginLeft: '74%',
-        width: '30%',
-        color: 'green',
-
-
-    },
-    heartIcon: {
-        end: 1,
-        position: 'absolute',
-        marginRight: 18,
-        marginTop: 30
-    },
-    hotelName: {
-        marginLeft: '50%',
-        top: '8%',
-        fontSize: 20,
-    },
-
-    rate: {
-        width: '8%',
-        height: '8%',
-        backgroundColor: 'blue',
-        marginLeft: '50%',
-        top: '15%',
-        fontSize: 20,
-        borderRadius: 5,
-
-    },
-    rateText: {
-        color: '#fff',
-        textAlign: 'center'
-    }
-
-})
+  card: {
+    width: '100%',
+    marginTop: 20,
+    backgroundColor: '#fff',
+    marginVertical: 10,
+    overflow: 'hidden',
+  },
+  pressable: {
+    flexDirection: 'row',
+  },
+  imgContainer: {
+    width: imgContainerWidth,
+    height: 150,
+    overflow: 'hidden',
+  },
+  image: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    borderRadius: 15,
+  },
+  contentContainer: {
+    flex: 1,
+    marginLeft: 10,
+  },
+  hotelName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 8,
+  },
+  rate: {
+    width: 30,
+    height: 30,
+    backgroundColor: 'blue',
+    borderRadius: 5,
+    marginTop: 5,
+  },
+  rateText: {
+    color: '#fff',
+    textAlign: 'center',
+    lineHeight: 30,
+  },
+  description: {
+    marginTop: 5,
+    fontSize: 14,
+    color: '#555',
+    marginBottom:30,
+  },
+  heartIcon: {
+    marginLeft: 'auto',
+    marginTop: 10,
+  },
+  pricesContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 260, // Cambiado para colocar en la esquina inferior izquierda
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    padding: 5,
+    borderRadius: 5,
+    width: 128,
+    height: 30,
+  },
+  pricesText: {
+    color: 'green',
+  },
+});
