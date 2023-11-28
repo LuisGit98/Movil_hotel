@@ -19,11 +19,13 @@ export const HomeScreen = ({ navigation }) => {
 
   const handleSelectDates = () => {
     console.log('Fechas seleccionadas:', selectedDates);
-    toggleCalendar(); 
+    toggleCalendar();
   };
 
   const search = () => {
     console.log('Realizando búsqueda...');
+    // Redireccionar a hotelCards
+    navigation.navigate('SelectHotelScreen');
   };
 
   return (

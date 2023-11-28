@@ -1,52 +1,55 @@
 import React from 'react';
-import { Text, View, TextInput, Pressable, StyleSheet } from 'react-native';
+import { Text, View, TextInput, Pressable, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 
 export function LoginScreen({ navigation }) {
-    const handleLogin = () => {
-      navigation.navigate('HomeScreen');
-    };
-  
-    return (
-      <View style={styles.container}>
-        <View style={styles.formContainer}>
-          <Text style={styles.alojaText}>Aloja Baja Store</Text>
-          <Text style={styles.label}>Ingresar usuario:</Text>
-          <TextInput
-            style={styles.input}
-            placeholder='Ingrese su usuario'
-          />
-          <Text style={styles.label}>Contraseña:</Text>
-          <TextInput
-            style={styles.input}
-            secureTextEntry={true}
-            placeholder='Ingrese su contraseña'
-          />
-          <Text
-            style={styles.forgotPasswordText}
-            onPress={() => console.log('Has olvidado la contraseña')}
-          >
-            ¿Has olvidado la contraseña?
-          </Text>
-        </View>
-  
-        <View style={styles.sendBtn}>
-          <Pressable
-            onPress={handleLogin}
-            style={styles.sendBtnInner}
-          >
-            <Text style={styles.btnText}>Iniciar sesión</Text>
-          </Pressable>
-        </View>
-        
+  const handleLogin = () => {
+    navigation.navigate('HomeScreen');
+  };
+
+  return (
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <View style={styles.formContainer}>
+        <Text style={styles.alojaText}>Aloja Baja Store</Text>
+        <Text style={styles.label}>Ingresar usuario:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder='Ingrese su usuario'
+        />
+        <Text style={styles.label}>Contraseña:</Text>
+        <TextInput
+          style={styles.input}
+          secureTextEntry={true}
+          placeholder='Ingrese su contraseña'
+        />
         <Text
-          style={styles.signUpText}
-          onPress={() => console.log('Crear una cuenta')}
+          style={styles.forgotPasswordText}
+          onPress={() => console.log('Has olvidado la contraseña')}
         >
-          ¿No tienes una cuenta?
+          ¿Has olvidado la contraseña?
         </Text>
       </View>
-    );
-  }
+
+      <View style={styles.sendBtn}>
+        <Pressable
+          onPress={handleLogin}
+          style={styles.sendBtnInner}
+        >
+          <Text style={styles.btnText}>Iniciar sesión</Text>
+        </Pressable>
+      </View>
+
+      <Text
+        style={styles.signUpText}
+        onPress={() => console.log('Crear una cuenta')}
+      >
+        ¿No tienes una cuenta?
+      </Text>
+    </KeyboardAvoidingView>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -105,6 +108,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
+
 
 
 
