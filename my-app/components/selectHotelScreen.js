@@ -1,14 +1,12 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import { styles } from '../styles/styles'
 import { Entypo } from '@expo/vector-icons';
-import { CardHotel } from './hotelCards'
-import { Menu } from './bottomMenu'
+import { HotelCards } from './hotelCards';
 
 export function SelectHotelScreen({ navigation }) {
     return (
-        <View style={styles.formContainer}>
-
-            <Text style={styles_h.title}>Aloja Baja Store</Text>
+        <View>
+            <Text style={styles_h.alojaText}>Aloja Baja Store</Text>
             <View style={styles_h.barra}>
                 <Text style={styles_h.text_h}>
                     Ordenar
@@ -22,23 +20,22 @@ export function SelectHotelScreen({ navigation }) {
 
             </View>
 
-            <CardHotel></CardHotel>
-            <CardHotel></CardHotel>
-            <CardHotel></CardHotel>
+            <HotelCards></HotelCards>
 
 
         </View>);
 }
 const styles_h = StyleSheet.create({
     container: {
-        width: ' 100 %',
-        height: '100 %',
-        backgroundColor: '#172c94',
-        position: 'absolute'
-    },
-
+        flex: 1,
+        backgroundColor: '#0F1F68', 
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        padding: 20,
+        paddingTop: 60, 
+      },
     text_h: {
-        fontSize: 23,
+        fontSize: 52,
         width: '70%',
         marginLeft: '10%',
         backgroundColor: '#fff',
@@ -54,9 +51,16 @@ const styles_h = StyleSheet.create({
     },
     title: {
         fontSize: 33,
-        color: '#fff'
+        color: '#fff',
     },
     icon: {
         top: 0
-    }
+    },
+    alojaText: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: '#fff',
+        marginBottom: 20,
+        textAlign: 'center',
+      },
 })

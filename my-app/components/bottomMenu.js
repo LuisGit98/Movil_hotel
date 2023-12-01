@@ -23,7 +23,7 @@ const Menu = () => {
         <Icon name="calendar" size={20} color="#000" />
         <Text style={styles.menuText}>Reservar</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.menuButton} onPress={() => navigateToScreen('History')}>
+      <TouchableOpacity style={styles.menuButton} onPress={() => navigateToScreen('HistoryScreen')}>
         <Icon name="history" size={20} color="#000" />
         <Text style={styles.menuText}>Historial</Text>
       </TouchableOpacity>

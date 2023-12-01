@@ -6,9 +6,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { HomeScreen } from './components/homeScreen';
 import { LoginScreen } from './components/login';
 import {Room} from './components/roomCard'
+import { CardHotel } from './components/hotelCards';
 import { Favorites } from './components/favorites';
 import { Search } from './components/search';
-import {SelectRoomScreen} from './components/selectRoomScreen'
+
+
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -43,7 +45,24 @@ export default function App() {
           options={{
             headerShown: false
           }} />
+          
+        <Stack.Screen
+          name='Home'
+          component={SelectHotelScreen}
+          options={{
+            headerShown: false
+          }} />
 
+        <Stack.Screen
+          name='CardHotel'
+          component={CardHotel}
+          options={{
+            headerShown: false
+          }} />
+
+        <Stack.Screen
+          name='Room'
+          component={Room} />
 
         <Stack.Screen
           name='Favorites'
@@ -58,13 +77,7 @@ export default function App() {
           options={{
             headerShown: false
           }} /> 
-
-        <Stack.Screen
-          name='History'
-          component={History} 
-          options={{
-            headerShown: false
-          }} /> 
+          
 
       </Stack.Navigator>
     </NavigationContainer>
