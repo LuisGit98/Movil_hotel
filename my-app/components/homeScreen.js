@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Menu from './bottomMenu';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Modal from 'react-native-modal';
 import { Calendar } from 'react-native-calendars';
 
-export const HomeScreen = ({ navigation }) => {
+export const HomeScreen = ({ route, navigation }) => {
   const [isCalendarVisible, setCalendarVisible] = useState(false);
   const [selectedDates, setSelectedDates] = useState({});
+  const [selectedMunicipio, setSelectedMunicipio] = useState(null);
+
+  useEffect(() => {
+    const { params } = route;
+    if (params && params.selectedMunicipio) {
+      setSelectedMunicipio(params.selectedMunicipio);
+    }
+  }, [route]);
 
   const goToDestination = () => {
     navigation.navigate('Search');
@@ -19,11 +27,17 @@ export const HomeScreen = ({ navigation }) => {
 
   const handleSelectDates = () => {
     console.log('Fechas seleccionadas:', selectedDates);
-    toggleCalendar(); 
+    toggleCalendar();
   };
 
   const search = () => {
     console.log('Realizando búsqueda...');
+    if (selectedMunicipio && selectedMunicipio.name) {
+      console.log('Municipio seleccionado:', selectedMunicipio.name);
+    } else {
+      console.log('Ningún municipio seleccionado o sin nombre.');
+    }
+    // navigation.navigate('SelectHotelScreen');
   };
 
   return (
@@ -32,7 +46,9 @@ export const HomeScreen = ({ navigation }) => {
 
       <TouchableOpacity style={styles.button} onPress={goToDestination}>
         <Icon name="plane" size={20} color="#fff" />
-        <Text style={styles.buttonText}>A donde vamos?</Text>
+        <Text style={styles.buttonText}>
+          {selectedMunicipio ? selectedMunicipio.name : 'A donde vamos?'}
+        </Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.button} onPress={toggleCalendar}>

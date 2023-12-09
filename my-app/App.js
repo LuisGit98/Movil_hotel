@@ -6,17 +6,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { HomeScreen } from './components/homeScreen';
 import { LoginScreen } from './components/login';
 import {Room} from './components/roomCard'
-import { CardHotel } from './components/hotelCards';
 import { Favorites } from './components/favorites';
 import { Search } from './components/search';
-
-
+import { SelectRoomScreen } from './components/selectRoomScreen';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator initialRouteName='HomeScreen'>
           <Stack.Screen
           name='Favorites'
           component={Favorites}
@@ -54,22 +52,11 @@ export default function App() {
           }} />
 
         <Stack.Screen
-          name='CardHotel'
-          component={CardHotel}
+          name='Room'
+          component={Room} 
           options={{
             headerShown: false
           }} />
-
-        <Stack.Screen
-          name='Room'
-          component={Room} />
-
-        <Stack.Screen
-          name='Favorites'
-          component={Favorites} 
-          options={{
-            headerShown: false
-          }} /> 
 
         <Stack.Screen
           name='Search'
@@ -78,7 +65,6 @@ export default function App() {
             headerShown: false
           }} /> 
           
-
       </Stack.Navigator>
     </NavigationContainer>
   );

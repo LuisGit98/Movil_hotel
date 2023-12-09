@@ -1,52 +1,63 @@
-import React from 'react';
-import { Text, View, TextInput, Pressable, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, TextInput, Pressable, StyleSheet, Alert  } from 'react-native';
 
 export function LoginScreen({ navigation }) {
-    const handleLogin = () => {
-      navigation.navigate('HomeScreen');
-    };
-  
-    return (
-      <View style={styles.container}>
-        <View style={styles.formContainer}>
-          <Text style={styles.alojaText}>Aloja Baja Store</Text>
-          <Text style={styles.label}>Ingresar usuario:</Text>
-          <TextInput
-            style={styles.input}
-            placeholder='Ingrese su usuario'
-          />
-          <Text style={styles.label}>Contraseña:</Text>
-          <TextInput
-            style={styles.input}
-            secureTextEntry={true}
-            placeholder='Ingrese su contraseña'
-          />
-          <Text
-            style={styles.forgotPasswordText}
-            onPress={() => console.log('Has olvidado la contraseña')}
-          >
-            ¿Has olvidado la contraseña?
-          </Text>
-        </View>
-  
-        <View style={styles.sendBtn}>
-          <Pressable
-            onPress={handleLogin}
-            style={styles.sendBtnInner}
-          >
-            <Text style={styles.btnText}>Iniciar sesión</Text>
-          </Pressable>
-        </View>
-        
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    // Validaciones básicas
+    if (!email || !password) {
+      Alert.alert('', 'Por favor, complete todos los campos.');
+      return;
+    }
+
+    // Puedes agregar aquí tu lógica de autenticación
+    // navigation.navigate('HomeScreen');
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.formContainer}>
+        <Text style={styles.alojaText}>Aloja Baja Store</Text>
+        <Text style={styles.label}>Ingresar correo:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder='Ingrese su correo'
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
+        <Text style={styles.label}>Contraseña:</Text>
+        <TextInput
+          style={styles.input}
+          secureTextEntry={true}
+          placeholder='Ingrese su contraseña'
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+        />
         <Text
-          style={styles.signUpText}
-          onPress={() => console.log('Crear una cuenta')}
+          style={styles.forgotPasswordText}
+          onPress={() => console.log('Has olvidado la contraseña')}
         >
-          ¿No tienes una cuenta?
+          ¿Has olvidado la contraseña?
         </Text>
       </View>
-    );
-  }
+
+      <View style={styles.sendBtn}>
+        <Pressable onPress={handleLogin} style={styles.sendBtnInner}>
+          <Text style={styles.btnText}>Iniciar sesión</Text>
+        </Pressable>
+      </View>
+
+      <Text
+        style={styles.signUpText}
+        onPress={() => console.log('Crear una cuenta')}
+      >
+        ¿No tienes una cuenta?
+      </Text>
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -78,7 +89,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 15,
     paddingHorizontal: 10,
-    color: '#fff',
+    color: '#000', // Cambiado a negro para que el texto sea visible
     backgroundColor: '#fff',
   },
   forgotPasswordText: {
