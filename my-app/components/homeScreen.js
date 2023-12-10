@@ -37,7 +37,7 @@ export const HomeScreen = ({ route, navigation }) => {
     } else {
       console.log('Ningún municipio seleccionado o sin nombre.');
     }
-    // navigation.navigate('SelectHotelScreen');
+    navigation.navigate('Home');
   };
 
   return (
